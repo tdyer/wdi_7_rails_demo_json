@@ -1,11 +1,16 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :edit, :update, :destroy]
+  # This controller uses built-in json rendering
 
+  before_action :set_book, only: [:show, :edit, :update, :destroy]
+  respond_to :json
   def index
     @books = Book.all
+    render json: Oj.dump(@books.lightning, mode: :compat)
   end
 
   def show
+    # Only return the title, don't return the price. This is also faster on the DB
+    render json: @book.select([:title])
   end
 
   def create

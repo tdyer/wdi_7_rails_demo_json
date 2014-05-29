@@ -48,6 +48,7 @@ GEM
     mime-types (1.25.1)
     minitest (5.3.4)
     multi_json (1.10.1)
+    oj (2.9.4)
     pg (0.17.1)
     polyglot (0.3.4)
     pry (0.9.12.6)
@@ -104,6 +105,7 @@ PLATFORMS
 DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
+  oj
   pg
   pry-rails
   rails (= 4.1.0)
