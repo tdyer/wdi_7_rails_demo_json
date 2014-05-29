@@ -5,12 +5,12 @@ class BooksController < ApplicationController
   respond_to :json
   def index
     @books = Book.all
+    # Somewhat faster for larger sets. Not needed most of the time
     render json: Oj.dump(@books.lightning, mode: :compat)
   end
 
   def show
-    # Only return the title, don't return the price. This is also faster on the DB
-    render json: @book.select([:title])
+    render json: @book
   end
 
   def create

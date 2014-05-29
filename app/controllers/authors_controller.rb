@@ -1,7 +1,6 @@
 class AuthorsController < ApplicationController
   # This controller uses jBuilder Templates
 
-
   before_action :set_author, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -13,20 +12,19 @@ class AuthorsController < ApplicationController
 
   def create
     @author = Author.new(author_params)
-      if @author.save
-        render :show, status: :created, location: @author
-      else
-        render json: @author.errors, status: :unprocessable_entity
-      end
+    if @author.save
+      render :show, status: :created, location: @author
+    else
+      render json: @author.errors, status: :unprocessable_entity
     end
   end
 
   def update
-      if @author.update(author_params)
-        render :show, status: :ok, location: @author
-      else
-        render json: @author.errors, status: :unprocessable_entity
-      end
+    if @author.update(author_params)
+      render :show, status: :ok, location: @author
+    else
+      render json: @author.errors, status: :unprocessable_entity
+    end
   end
 
   def destroy
